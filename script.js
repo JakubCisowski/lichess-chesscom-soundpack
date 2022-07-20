@@ -4,7 +4,7 @@
 // @description To not hear both, disable lichess sound in lichess preferences.
 // @include     https://*.lichess.org/*
 // @include     https://lichess.org/*
-// @version     1.2
+// @version     1.3
 // @grant GM_xmlhttpRequest
 // @connect cdn.discordapp.com
 // ==/UserScript==
@@ -62,7 +62,7 @@ var customSndList = new Map([
 ])
 var customSnds = {};
 customSndList.forEach(function(element, index) {
-    loadSound(element).then(function(buffer) {customSnds[index] = buffer;}, function(e) {console.log(e);})
+    loadSound(element).then(function(buffer) {customSnds[index] = buffer;}, function(e) {/*console.log(e);*/})
 });
 
 // use this later in the script
@@ -85,7 +85,7 @@ lichess.sound.origPlay = lichess.sound.play;
 let isCheck = false;
 
 function customPlay(name, volume) {
-    console.log(name);
+    //console.log(name);
     if (customSnds[name]) {
         if (!volume) volume = lichess.sound.getVolume();
         if (name != 'check'){
